@@ -1,14 +1,25 @@
 // Timeline Module
 const TimelineModule = {
     init() {
-        document.addEventListener('timeline-loaded', () => {
-            this.timelinePoints = document.querySelectorAll('.timeline-point');
-            this.timelineGroups = document.querySelector('.timeline-groups');
-            this.groups = document.querySelectorAll('.timeline-group');
-            this.activePoint = null;
-            
+        console.log('TimelineModule: Inizializzazione');
+        this.fetchElements();
+        if (this.timelinePoints && this.timelineGroups && this.groups) {
             this.bindEvents();
             this.resetAllStates();
+        }
+    },
+
+    fetchElements() {
+        console.log('TimelineModule: Recupero elementi');
+        this.timelinePoints = document.querySelectorAll('.timeline-point');
+        this.timelineGroups = document.querySelector('.timeline-groups');
+        this.groups = document.querySelectorAll('.timeline-group');
+        this.activePoint = null;
+        
+        console.log('TimelineModule: Elementi trovati', {
+            points: this.timelinePoints?.length,
+            groups: this.groups?.length,
+            container: !!this.timelineGroups
         });
     },
 
@@ -27,8 +38,10 @@ const TimelineModule = {
     },
 
     bindEvents() {
+        console.log('TimelineModule: Binding eventi');
         this.timelinePoints.forEach(point => {
             point.addEventListener('click', () => {
+                console.log('TimelineModule: Click su punto', point.getAttribute('data-years'));
                 this.handlePointClick(point);
             });
         });
@@ -36,6 +49,7 @@ const TimelineModule = {
 
     handlePointClick(point) {
         const years = point.getAttribute('data-years');
+        console.log('TimelineModule: Gestione click', years);
         
         // Se clicchiamo sullo stesso punto attivo
         if (this.activePoint === point) {
@@ -55,6 +69,7 @@ const TimelineModule = {
     },
 
     closeCurrentGroup(callback) {
+        console.log('TimelineModule: Chiusura gruppo corrente');
         // Rimuovi la classe active dal punto corrente
         if (this.activePoint) {
             this.activePoint.classList.remove('active');
@@ -86,6 +101,7 @@ const TimelineModule = {
     },
 
     openNewGroup(point, years) {
+        console.log('TimelineModule: Apertura nuovo gruppo', years);
         // Attiva il nuovo punto
         point.classList.add('active');
         this.activePoint = point;
@@ -113,7 +129,11 @@ const TimelineModule = {
     }
 };
 
-// Inizializza il modulo quando il DOM è caricato
-document.addEventListener('DOMContentLoaded', () => {
+// Inizializza quando il modulo viene caricato dinamicamente
+document.addEventListener('timeline-loaded', () => {
+    console.log('TimelineModule: Contenuto timeline caricato');
     TimelineModule.init();
 });
+
+// Esponi il modulo globalmente
+window.TimelineModule = TimelineModule;

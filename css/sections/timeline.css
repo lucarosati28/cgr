@@ -6,9 +6,49 @@
 }
 
 .section-timeline {
+    position: relative;
+    overflow: hidden;
     background-color: var(--bg-dark);
     color: var(--text-light);
     padding: 4rem 0;
+}
+
+/* Effetto sfondo sfumato */
+.section-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        var(--bg-dark) 0%,
+        rgba(41, 41, 41, 1) 50%,
+        var(--bg-dark) 100%
+    );
+    z-index: 0;
+}
+
+/* Effetto griglia in background */
+.section-timeline::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(rgba(255, 107, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 107, 0, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+    z-index: 0;
+}
+
+/* Container sopra gli effetti di sfondo */
+.section-timeline .container {
+    position: relative;
+    z-index: 1;
 }
 
 .timeline {
