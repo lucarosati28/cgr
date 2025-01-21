@@ -38,11 +38,11 @@
 
 .about-text {
     background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(1px);
     padding: var(--spacing-xl);
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    transform: translateY(20px);
+    transform: translateY(0px);
     opacity: 0;
     animation: fadeInUp 1s ease forwards;
 }
