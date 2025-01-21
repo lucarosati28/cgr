@@ -2,81 +2,46 @@
 const TimelineLoader = {
     async init() {
         try {
+            console.log('TimelineLoader: Inizio caricamento');
             const response = await fetch('sections/timeline.html');
-            const html = await response.text();
             
-            // Inserisci la timeline nel main
+            if (!response.ok) {
+                throw new Error(`Errore HTTP: ${response.status}`);
+            }
+            
+            const htmlContent = await response.text();
+            console.log('TimelineLoader: Contenuto caricato', htmlContent.length);
+            
             const timelineContainer = document.getElementById('timeline-container');
             if (timelineContainer) {
-                timelineContainer.innerHTML = html;
-                this.initializeTimeline();
+                console.log('TimelineLoader: Contenitore trovato');
+                // Inserisce il contenuto completo
+                timelineContainer.innerHTML = htmlContent;
+                
+                // Lancia un evento personalizzato dopo il caricamento
+                const event = new Event('timeline-loaded');
+                document.dispatchEvent(event);
+            } else {
+                console.error('TimelineLoader: Contenitore timeline-container non trovato');
             }
         } catch (error) {
             console.error('Errore nel caricamento della timeline:', error);
-        }
-    },
-
-    initializeTimeline() {
-        // Qui andrà tutta la logica di inizializzazione della timeline
-        // Che sposteremo dal file principale
-        this.bindEvents();
-        this.setupAnimations();
-    },
-
-    bindEvents() {
-        // Event handlers per la timeline
-        document.querySelectorAll('.timeline-group').forEach(group => {
-            const header = group.querySelector('.group-header');
-            if (header) {
-                header.addEventListener('click', (e) => this.toggleGroup(e, group));
+            
+            const timelineContainer = document.getElementById('timeline-container');
+            if (timelineContainer) {
+                timelineContainer.innerHTML = `
+                    <div class="timeline-error">
+                        <h3>Impossibile caricare la Timeline</h3>
+                        <p>Si è verificato un errore durante il caricamento del contenuto.</p>
+                    </div>
+                `;
             }
-        });
-    },
-
-    toggleGroup(e, group) {
-        e.preventDefault();
-        e.stopPropagation();
-        
-        const isActive = group.classList.contains('active');
-        
-        // Chiudi tutti i gruppi
-        document.querySelectorAll('.timeline-group').forEach(g => {
-            g.classList.remove('active');
-        });
-
-        if (!isActive) {
-            group.classList.add('active');
-            this.scrollToGroup(group);
         }
-    },
-
-    scrollToGroup(group) {
-        const navbarHeight = document.querySelector('.navbar').offsetHeight;
-        const groupTop = group.getBoundingClientRect().top + window.scrollY;
-        const scrollPosition = groupTop - navbarHeight - 20;
-
-        window.scrollTo({
-            top: scrollPosition,
-            behavior: 'smooth'
-        });
-    },
-
-    setupAnimations() {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.3 });
-
-        document.querySelectorAll('.timeline-group').forEach(group => {
-            observer.observe(group);
-        });
     }
 };
 
 // Initialize on DOM load
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('TimelineLoader: DOM caricato');
     TimelineLoader.init();
 });
