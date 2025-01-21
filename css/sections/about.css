@@ -1,27 +1,15 @@
 /* About Section Styles */
 .section-about {
     position: relative;
-    background-image: url('https://raw.githubusercontent.com/lucarosati28/cgr/main/assets/images/about/festival-about.png');
+    background-image: url('https://raw.githubusercontent.com/lucarosati28/cgr/main/assets/about/festival-about.png');
     background-size: cover;
-    background-position: center center;
+    background-position: center;
     background-attachment: fixed;
-    background-repeat: no-repeat;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
     padding: var(--spacing-xl) 0;
     min-height: 100vh;
-    will-change: transform;
 }
 
-/* Il resto del CSS rimane invariato */
-/* Media query per disabilitare l'effetto parallax su dispositivi che potrebbero avere problemi */
-@media (max-width: 768px), (pointer: coarse) {
-    .section-about {
-        background-attachment: scroll;
-        background-position: center;
-    }
-}
-
+/* Overlay per il testo */
 .section-about::before {
     content: '';
     position: absolute;
@@ -71,10 +59,11 @@
     margin-bottom: 0;
 }
 
+/* Section title specific styles */
 .section-about h2 {
     color: var(--warm-glow);
     margin-bottom: var(--spacing-xl);
-    text-shadow: 0 0 20px rgba(255, 107, 74, 0.5);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }
 
 /* Responsive Design */
@@ -89,6 +78,10 @@
 }
 
 @media (max-width: 768px) {
+    .section-about {
+        background-attachment: scroll; /* Migliore performance su mobile */
+    }
+
     .about-text {
         padding: var(--spacing-md);
     }
