@@ -1,7 +1,7 @@
 /* About Section Styles */
 .section-about {
     position: relative;
-    background-image: url('../../assets/images/festival-background.jpg');
+    background-image: url('https://raw.githubusercontent.com/lucarosati28/cgr/main/assets/images/about/festival-about.png');
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
@@ -13,6 +13,7 @@
     will-change: transform;
 }
 
+/* Il resto del CSS rimane invariato */
 /* Media query per disabilitare l'effetto parallax su dispositivi che potrebbero avere problemi */
 @media (max-width: 768px), (pointer: coarse) {
     .section-about {
@@ -21,7 +22,6 @@
     }
 }
 
-/* Resto del CSS rimane invariato */
 .section-about::before {
     content: '';
     position: absolute;
