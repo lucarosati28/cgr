@@ -1,0 +1,99 @@
+/* About Section Styles */
+.section-about {
+    position: relative;
+    background-image: url('../../assets/images/festival-background.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    padding: var(--spacing-xl) 0;
+    min-height: 100vh;
+    will-change: transform;
+}
+
+/* Media query per disabilitare l'effetto parallax su dispositivi che potrebbero avere problemi */
+@media (max-width: 768px), (pointer: coarse) {
+    .section-about {
+        background-attachment: scroll;
+        background-position: center;
+    }
+}
+
+/* Resto del CSS rimane invariato */
+.section-about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.8) 0%,
+        rgba(33, 150, 243, 0.1) 50%,
+        rgba(0, 0, 0, 0.8) 100%
+    );
+}
+
+.section-about .container {
+    position: relative;
+    z-index: 2;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--spacing-xl) 0;
+}
+
+.about-text {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    padding: var(--spacing-xl);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
+}
+
+.about-text p {
+    font-size: 1.2em;
+    line-height: 1.8;
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-light);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.about-text p:last-child {
+    margin-bottom: 0;
+}
+
+.section-about h2 {
+    color: var(--warm-glow);
+    margin-bottom: var(--spacing-xl);
+    text-shadow: 0 0 20px rgba(255, 107, 74, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .about-content {
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .about-text {
+        padding: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 768px) {
+    .about-text {
+        padding: var(--spacing-md);
+    }
+
+    .about-text p {
+        font-size: 1.1em;
+    }
+}
