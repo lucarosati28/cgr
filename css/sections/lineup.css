@@ -1,0 +1,168 @@
+/* Line Up Section */
+.section-lineup {
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.9),
+        rgba(0, 0, 0, 0.9)
+    ),
+    url('https://raw.githubusercontent.com/lucarosati28/cgr/main/assets/common/panoramica-astratta.png');
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+    padding: 6rem 0;
+    position: relative;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Header */
+.lineup-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.lineup-header h2 {
+    color: #FF6B00;
+    font-size: 3rem;
+    text-shadow: 0 0 20px rgba(255, 107, 0, 0.4);
+}
+
+/* Dates Grid */
+.dates-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+}
+
+/* Date Column */
+.date-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.date-header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.date-header h3 {
+    color: #FF6B00;
+    font-size: 2rem;
+    margin: 0;
+    text-shadow: 0 0 15px rgba(255, 107, 0, 0.3);
+    position: relative;
+    display: inline-block;
+}
+
+.date-header h3::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: #FF6B00;
+    border-radius: 2px;
+}
+
+/* Performance Card */
+.performance-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 107, 0, 0.1);
+}
+
+.performance-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 107, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.performance-time {
+    background: #FF6B00;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.performance-content {
+    display: flex;
+    padding: 1.5rem;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.artist-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.artist-info {
+    flex: 1;
+}
+
+.artist-info h4 {
+    font-size: 1.5rem;
+    margin: 0 0 0.5rem 0;
+    color: #fff;
+}
+
+.artist-info p {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .dates-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .lineup-header h2 {
+        font-size: 2.5rem;
+    }
+
+    .date-header h3 {
+        font-size: 1.8rem;
+    }
+
+    .performance-content {
+        padding: 1rem;
+    }
+
+    .artist-image {
+        width: 60px;
+        height: 60px;
+    }
+
+    .artist-info h4 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .performance-time {
+        font-size: 1rem;
+    }
+
+    .artist-image {
+        width: 50px;
+        height: 50px;
+    }
+}
