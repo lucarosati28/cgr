@@ -15,7 +15,6 @@ const TimelineLoader = {
             const timelineContainer = document.getElementById('timeline-container');
             if (timelineContainer) {
                 console.log('TimelineLoader: Contenitore trovato');
-                // Inserisce il contenuto completo
                 timelineContainer.innerHTML = htmlContent;
                 
                 // Lancia un evento personalizzato dopo il caricamento
