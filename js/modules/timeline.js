@@ -133,6 +133,15 @@ const TimelineModule = {
 document.addEventListener('timeline-loaded', () => {
     console.log('TimelineModule: Contenuto timeline caricato');
     TimelineModule.init();
+    
+    // Aggiungi istruzioni sotto il titolo
+    const title = document.querySelector('#timeline h2');
+    if (title) {
+        const instruction = document.createElement('div');
+        instruction.className = 'timeline-instruction';
+        instruction.innerHTML = `Clicca sui <span>●</span> per esplorare gli eventi<br>poi sulle schede con <span>▶</span> per le foto storiche`;
+        title.insertAdjacentElement('afterend', instruction);
+    }
 });
 
 // Esponi il modulo globalmente

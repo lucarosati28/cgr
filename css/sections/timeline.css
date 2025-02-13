@@ -130,7 +130,7 @@
 .timeline-groups.active {
     opacity: 1;
     height: auto;
-    margin-top: 3rem;
+    margin-top: 1rem; /* Ridotto lo spazio */
 }
 
 /* Gruppo singolo */
@@ -196,6 +196,25 @@
 .group-header p {
     color: rgba(255, 255, 255, 0.7);
     font-size: 1.1rem;
+}
+
+/* Istruzioni utente */
+.timeline-instruction {
+    text-align: center;
+    margin: 1.5rem auto;
+    color: var(--text-light);
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards 0.5s;
+    font-size: 0.9rem;
+    max-width: 600px;
+    padding: 0 1rem;
+    line-height: 1.5;
+}
+
+.timeline-instruction span {
+    color: var(--primary-color);
+    display: inline-block;
+    margin: 0 0.2rem;
 }
 
 /* Aggiungere queste media queries alla fine del file */
@@ -267,4 +286,31 @@
     .timeline-point:nth-child(even) span {
         top: -25px;
     }
+}
+
+/* Pulsante foto */
+.photo-button {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 1rem;
+    padding: 0.5rem 1.2rem;
+    background: rgba(255, 107, 0, 0.1);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.photo-button:hover {
+    background: var(--primary-color);
+    color: var(--bg-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 0, 0.3);
+}
+
+.photo-button span {
+    margin-left: 0.5rem;
+    font-size: 0.8em;
 }
