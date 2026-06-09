@@ -1,8 +1,8 @@
 /* Footer Styles */
 .site-footer {
-    background-color: #1a1a1a;
+    background-color: #0A242B;
     padding: 1.5rem 0;
-    border-top: 1px solid rgba(255, 107, 0, 0.1);
+    border-top: 1px solid rgba(255, 111, 165, 0.15);
 }
 
 .footer-content {
@@ -33,7 +33,7 @@
 }
 
 .footer-link:hover {
-    color: #FF6B00;
+    color: var(--pop-pink);
 }
 
 .footer-icon {

@@ -1,32 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="1920" height="1080" version="1.1" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
-    <!-- Sfondo scuro con gradiente -->
+    <!-- Sfondo pop "Roviano CGR Pop Tributes 2026": notte teal a sinistra, giorno giallo a destra -->
     <defs>
-        <linearGradient id="skyGradient" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0" stop-color="#1a1a1a"/>
-            <stop offset="1" stop-color="#000"/>
+        <linearGradient id="nightSide" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0" stop-color="#2D7D8A"/>
+            <stop offset="1" stop-color="#14424E"/>
         </linearGradient>
-        <!-- Pattern per le stelle -->
-        <pattern id="stars" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-            <circle cx="10" cy="10" r="1" fill="#fff" opacity="0.5"/>
-            <circle cx="30" cy="40" r="1" fill="#fff" opacity="0.7"/>
-            <circle cx="50" cy="20" r="1" fill="#fff" opacity="0.6"/>
-            <circle cx="70" cy="50" r="1.5" fill="#fff" opacity="0.8"/>
-            <circle cx="90" cy="30" r="1" fill="#fff" opacity="0.5"/>
+        <linearGradient id="daySide" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0" stop-color="#FFC93C"/>
+            <stop offset="1" stop-color="#E89A2B"/>
+        </linearGradient>
+        <!-- Pattern halftone in stile fumetto -->
+        <pattern id="halftone" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+            <circle cx="10" cy="10" r="3" fill="#000" opacity="0.06"/>
+            <circle cx="30" cy="30" r="3" fill="#000" opacity="0.06"/>
         </pattern>
     </defs>
-    
-    <!-- Sfondo base -->
-    <rect width="1920" height="1080" fill="url(#skyGradient)"/>
-    
-    <!-- Layer stelle -->
-    <rect width="1920" height="1080" fill="url(#stars)"/>
-    
-    <!-- Montagne in lontananza -->
-    <path d="M0 600 L400 400 L800 550 L1200 350 L1600 500 L1920 450 L1920 1080 L0 1080 Z" 
-          fill="#2b2b2b" opacity="0.8"/>
-    
-    <!-- Montagne in primo piano -->
-    <path d="M0 700 L500 500 L1000 650 L1500 450 L1920 600 L1920 1080 L0 1080 Z" 
-          fill="#1f1f1f"/>
+
+    <!-- Lato notte (sinistra) -->
+    <rect x="0" y="0" width="960" height="1080" fill="url(#nightSide)"/>
+    <!-- Lato giorno (destra) -->
+    <rect x="960" y="0" width="960" height="1080" fill="url(#daySide)"/>
+    <!-- Texture halftone su tutto -->
+    <rect width="1920" height="1080" fill="url(#halftone)"/>
+
+    <!-- Stelle e scintille lato notte -->
+    <g fill="#FFF4DC">
+        <circle cx="120" cy="140" r="4" opacity="0.9"/>
+        <circle cx="320" cy="90" r="3" opacity="0.7"/>
+        <circle cx="540" cy="200" r="4" opacity="0.8"/>
+        <circle cx="760" cy="120" r="3" opacity="0.7"/>
+        <circle cx="200" cy="420" r="3" opacity="0.6"/>
+        <circle cx="660" cy="380" r="3" opacity="0.6"/>
+        <path d="M450 300 l8 20 20 8 -20 8 -8 20 -8 -20 -20 -8 20 -8 Z" fill="#FF6FA5" opacity="0.9"/>
+        <path d="M820 480 l6 15 15 6 -15 6 -6 15 -6 -15 -15 -6 15 -6 Z" fill="#FF6FA5" opacity="0.8"/>
+    </g>
+
+    <!-- Luna rosa con crateri -->
+    <g>
+        <circle cx="280" cy="260" r="110" fill="#FF6FA5"/>
+        <circle cx="320" cy="220" r="18" fill="#E85C92" opacity="0.8"/>
+        <circle cx="250" cy="290" r="12" fill="#E85C92" opacity="0.8"/>
+        <circle cx="310" cy="310" r="9" fill="#E85C92" opacity="0.8"/>
+    </g>
+
+    <!-- Nuvole crema lato notte -->
+    <g fill="#FFF4DC" opacity="0.9">
+        <ellipse cx="600" cy="160" rx="90" ry="32"/>
+        <ellipse cx="660" cy="140" rx="60" ry="26"/>
+        <ellipse cx="150" cy="500" rx="80" ry="28"/>
+    </g>
+
+    <!-- Sole arancio con raggi -->
+    <g>
+        <g stroke="#F2762E" stroke-width="14" stroke-linecap="round">
+            <line x1="1600" y1="80" x2="1600" y2="130"/>
+            <line x1="1600" y1="390" x2="1600" y2="440"/>
+            <line x1="1420" y1="260" x2="1470" y2="260"/>
+            <line x1="1730" y1="260" x2="1780" y2="260"/>
+            <line x1="1478" y1="138" x2="1513" y2="173"/>
+            <line x1="1687" y1="347" x2="1722" y2="382"/>
+            <line x1="1722" y1="138" x2="1687" y2="173"/>
+            <line x1="1513" y1="347" x2="1478" y2="382"/>
+        </g>
+        <circle cx="1600" cy="260" r="95" fill="#F2762E"/>
+        <circle cx="1600" cy="260" r="70" fill="#FF8C42"/>
+    </g>
+
+    <!-- Nuvole rosa lato giorno -->
+    <g fill="#FF6FA5" opacity="0.85">
+        <ellipse cx="1200" cy="170" rx="85" ry="30"/>
+        <ellipse cx="1260" cy="150" rx="55" ry="24"/>
+        <ellipse cx="1820" cy="480" rx="75" ry="26"/>
+    </g>
+
+    <!-- Scintille lato giorno -->
+    <g fill="#FFF4DC">
+        <path d="M1150 420 l7 18 18 7 -18 7 -7 18 -7 -18 -18 -7 18 -7 Z" opacity="0.9"/>
+        <path d="M1400 520 l6 15 15 6 -15 6 -6 15 -6 -15 -15 -6 15 -6 Z" opacity="0.8"/>
+        <circle cx="1300" cy="350" r="4" opacity="0.8"/>
+        <circle cx="1750" cy="380" r="4" opacity="0.7"/>
+    </g>
+
+    <!-- Colline scure all'orizzonte -->
+    <path d="M0 700 Q240 600 480 670 T960 650 T1440 670 T1920 640 L1920 1080 L0 1080 Z"
+          fill="#1B4A56" opacity="0.85"/>
+    <path d="M0 800 Q320 700 640 770 T1280 750 T1920 760 L1920 1080 L0 1080 Z"
+          fill="#0E2F38"/>
+
+    <!-- Alberi stilizzati sulle colline -->
+    <g fill="#0A242B">
+        <ellipse cx="300" cy="780" rx="45" ry="60"/>
+        <rect x="292" y="820" width="16" height="40" rx="6"/>
+        <ellipse cx="900" cy="760" rx="40" ry="55"/>
+        <rect x="893" y="800" width="14" height="38" rx="6"/>
+        <ellipse cx="1500" cy="790" rx="48" ry="62"/>
+        <rect x="1491" y="835" width="18" height="42" rx="6"/>
+    </g>
 </svg>

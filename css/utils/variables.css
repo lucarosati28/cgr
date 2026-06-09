@@ -1,31 +1,41 @@
 :root {
-    /* Colors */
-    --background-dark: #000000;
-    --primary-glow: #2196F3;
-    --accent-glow: #4FC3F7;
-    --text-light: #E3F2FD;
-    --warm-glow: #FF6B4A;
-    --warm-accent: #FFA07A;
-    
+    /* Colors - Roviano CGR Pop Tributes 2026 */
+    --background-dark: #0E2F38;      /* teal notte */
+    --primary-glow: #FF6FA5;         /* rosa bubblegum */
+    --accent-glow: #FFC93C;          /* giallo sole */
+    --text-light: #FFF4DC;           /* crema */
+    --warm-glow: #F2762E;            /* arancio pop */
+    --warm-accent: #FFC93C;          /* giallo pop */
+
+    /* Palette pop */
+    --pop-teal: #2D7D8A;
+    --pop-teal-dark: #14424E;
+    --pop-pink: #FF6FA5;
+    --pop-orange: #F2762E;
+    --pop-yellow: #FFC93C;
+    --pop-cream: #FFF4DC;
+    --pop-purple: #8A5BB5;
+
     /* Typography */
-    --font-primary: 'Space Grotesk', sans-serif;
-    --font-weight-light: 300;
+    --font-primary: 'Baloo 2', sans-serif;
+    --font-display: 'Titan One', 'Baloo 2', sans-serif;
+    --font-weight-light: 400;
     --font-weight-regular: 400;
     --font-weight-bold: 700;
     --line-height-base: 1.6;
-    
+
     /* Spacing */
     --spacing-xs: 0.25rem;
     --spacing-sm: 0.5rem;
     --spacing-md: 1rem;
     --spacing-lg: 2rem;
     --spacing-xl: 4rem;
-    
+
     /* Transitions */
     --transition-fast: 0.3s ease;
     --transition-medium: 0.5s ease;
     --transition-slow: 0.8s ease;
-    
+
     /* Z-index layers */
     --z-navbar: 1000;
     --z-modal: 2000;

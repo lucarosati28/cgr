@@ -19,7 +19,7 @@ section h2 {
     background: linear-gradient(
         to bottom,
         var(--background-dark) 0%,
-        rgba(33, 150, 243, 0.1) 100%
+        rgba(45, 125, 138, 0.15) 100%
     );
 }
 

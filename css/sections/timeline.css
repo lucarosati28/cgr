@@ -1,8 +1,8 @@
 /* Timeline Section Styles */
 :root {
-    --primary-color: #FF6B00;
-    --bg-dark: #030303;
-    --text-light: #f4f4f4;
+    --primary-color: #FF6FA5;
+    --bg-dark: #0E2F38;
+    --text-light: #FFF4DC;
 }
 
 .section-timeline {
@@ -111,7 +111,7 @@
     transform: scale(1.3);
     background-color: #fff;
     border: 2px solid var(--primary-color);
-    box-shadow: 0 0 15px rgba(255, 107, 0, 0.5);
+    box-shadow: 0 0 15px rgba(255, 111, 165, 0.5);
 }
 
 .timeline-point.active span {
@@ -294,7 +294,7 @@
     align-items: center;
     margin-top: 1rem;
     padding: 0.5rem 1.2rem;
-    background: rgba(255, 107, 0, 0.1);
+    background: rgba(255, 111, 165, 0.1);
     color: var(--primary-color);
     border: 1px solid var(--primary-color);
     border-radius: 20px;
@@ -307,7 +307,7 @@
     background: var(--primary-color);
     color: var(--bg-dark);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 107, 0, 0.3);
+    box-shadow: 0 5px 15px rgba(255, 111, 165, 0.3);
 }
 
 .photo-button span {

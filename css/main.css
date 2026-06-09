@@ -22,6 +22,13 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
 }
 
+/* Titoli principali in stile "bubble" pop */
+h1, h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: 0.03em;
+}
+
 p {
     margin-bottom: var(--spacing-md);
 }
@@ -43,7 +50,7 @@ a {
 
 /* Utilities */
 .text-gradient {
-    background: linear-gradient(45deg, var(--text-light), var(--warm-glow));
+    background: linear-gradient(45deg, var(--pop-pink), var(--pop-orange));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -55,5 +62,5 @@ a {
     padding: var(--spacing-lg);
     margin: var(--spacing-md) 0;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(33, 150, 243, 0.1);
+    border: 1px solid rgba(255, 111, 165, 0.15);
 }

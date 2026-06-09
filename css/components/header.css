@@ -38,11 +38,11 @@ header::before {
     animation: fadeInUp 1s ease forwards;
 }
 
-/* Logo styling - aumentato il glow per risaltare sullo sfondo stellato */
+/* Logo styling - glow rosa pop per risaltare sullo sfondo */
 .header-logo {
     max-width: 200px;
     margin-bottom: 30px;
-    filter: drop-shadow(0 0 20px rgba(255, 107, 74, 0.6));
+    filter: drop-shadow(0 0 20px rgba(255, 111, 165, 0.7));
 }
 
 /* Header Typography */
@@ -71,12 +71,12 @@ header::before {
     font-weight: bold;
     font-size: 1.2em;
     transition: var(--transition-fast);
-    box-shadow: 0 0 20px rgba(255, 107, 74, 0.3);
+    box-shadow: 0 0 20px rgba(242, 118, 46, 0.4);
 }
 
 .header-content .cta-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 0 30px rgba(255, 107, 74, 0.5);
+    box-shadow: 0 0 30px rgba(255, 201, 60, 0.6);
 }
 
 /* Responsive Design */
