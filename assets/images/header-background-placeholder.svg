@@ -2,10 +2,45 @@
 <svg width="1920" height="1080" version="1.1" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!--
       Sfondo hero "Roviano CGR Pop Tributes 2026" (desktop).
-      Composizione a livelli: cielo diviso notte/giorno, astri con glow,
-      nuvole cartoon, halftone sfumato, tre piani di alberi per la profondita',
-      grana feTurbulence e vignettatura per la leggibilita' del testo.
+      Composizione asimmetrica a livelli con micro-animazioni dichiarative:
+      le nuvole derivano, le scintille brillano, la luna fluttua, i raggi del
+      sole ruotano lentamente. Tutto si ferma con prefers-reduced-motion.
     -->
+    <style>
+        @keyframes drift {
+            from { transform: translateX(-22px); }
+            to   { transform: translateX(22px); }
+        }
+        @keyframes floaty {
+            from { transform: translateY(-7px); }
+            to   { transform: translateY(7px); }
+        }
+        @keyframes raysSpin {
+            to { transform: rotate(360deg); }
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.35; }
+            50%      { opacity: 1; }
+        }
+        @keyframes flicker {
+            0%, 100% { opacity: 0.15; transform: translateY(0); }
+            50%      { opacity: 0.85; transform: translateY(-6px); }
+        }
+        .drift   { animation: drift 18s ease-in-out infinite alternate; }
+        .drift-2 { animation: drift 26s ease-in-out infinite alternate; animation-delay: -9s; }
+        .drift-3 { animation: drift 22s ease-in-out infinite alternate-reverse; animation-delay: -4s; }
+        .floaty  { animation: floaty 9s ease-in-out infinite alternate; }
+        .rays    { animation: raysSpin 90s linear infinite; }
+        .tw      { animation: twinkle 4s ease-in-out infinite; }
+        .tw-2    { animation: twinkle 5.5s ease-in-out infinite; animation-delay: -2s; }
+        .tw-3    { animation: twinkle 3.2s ease-in-out infinite; animation-delay: -1.2s; }
+        .ff      { animation: flicker 6s ease-in-out infinite; }
+        .ff-2    { animation: flicker 7.5s ease-in-out infinite; animation-delay: -3s; }
+        .ff-3    { animation: flicker 5s ease-in-out infinite; animation-delay: -1.5s; }
+        @media (prefers-reduced-motion: reduce) {
+            * { animation: none !important; }
+        }
+    </style>
     <defs>
         <linearGradient id="nightSky" x1="0" x2="0" y1="0" y2="1">
             <stop offset="0" stop-color="#35879B"/>
@@ -47,19 +82,23 @@
             <rect width="1920" height="1080" fill="url(#dotsFadeGrad)"/>
         </mask>
 
-        <!-- Grana sottile per togliere l'effetto "piatto digitale" -->
-        <filter id="grain" x="0" y="0" width="100%" height="100%">
+        <!-- Grana: rasterizzata una volta in un tassello e ripetuta,
+             cosi' le animazioni non la ricalcolano a ogni frame -->
+        <filter id="grainF" x="0" y="0" width="100%" height="100%">
             <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/>
             <feColorMatrix type="saturate" values="0"/>
             <feComponentTransfer>
                 <feFuncA type="linear" slope="0.07" intercept="0"/>
             </feComponentTransfer>
         </filter>
+        <pattern id="grain" x="0" y="0" width="240" height="240" patternUnits="userSpaceOnUse">
+            <rect width="240" height="240" filter="url(#grainF)"/>
+        </pattern>
 
         <!-- Falce di luna: cerchio pieno meno cerchio sfalsato -->
         <mask id="crescent">
-            <circle cx="340" cy="300" r="130" fill="#fff"/>
-            <circle cx="405" cy="245" r="105" fill="#000"/>
+            <circle cx="330" cy="270" r="130" fill="#fff"/>
+            <circle cx="395" cy="215" r="105" fill="#000"/>
         </mask>
 
         <!-- Nuvola cartoon a base piatta -->
@@ -95,91 +134,101 @@
     <rect width="1920" height="1080" fill="url(#dots)" mask="url(#dotsFade)"/>
 
     <!-- ===== Lato notte ===== -->
-    <circle cx="340" cy="300" r="280" fill="url(#moonGlow)"/>
-    <g mask="url(#crescent)">
-        <circle cx="340" cy="300" r="130" fill="#FF6FA5"/>
-        <circle cx="295" cy="345" r="20" fill="#E85C92"/>
-        <circle cx="270" cy="280" r="13" fill="#E85C92"/>
-        <circle cx="330" cy="400" r="10" fill="#E85C92"/>
+    <g class="floaty">
+        <circle cx="330" cy="270" r="280" fill="url(#moonGlow)"/>
+        <g mask="url(#crescent)">
+            <circle cx="330" cy="270" r="130" fill="#FF6FA5"/>
+            <circle cx="285" cy="315" r="20" fill="#E85C92"/>
+            <circle cx="260" cy="250" r="13" fill="#E85C92"/>
+            <circle cx="320" cy="370" r="10" fill="#E85C92"/>
+        </g>
     </g>
 
     <g fill="#FFF4DC">
-        <circle cx="140" cy="150" r="4" opacity="0.9"/>
-        <circle cx="430" cy="105" r="3" opacity="0.7"/>
-        <circle cx="640" cy="210" r="4" opacity="0.85"/>
-        <circle cx="800" cy="120" r="3" opacity="0.7"/>
-        <circle cx="240" cy="500" r="3" opacity="0.6"/>
-        <circle cx="700" cy="480" r="3" opacity="0.6"/>
-        <circle cx="560" cy="640" r="3" opacity="0.5"/>
+        <circle class="tw" cx="140" cy="150" r="4"/>
+        <circle class="tw-2" cx="430" cy="105" r="3"/>
+        <circle class="tw-3" cx="640" cy="210" r="4"/>
+        <circle class="tw-2" cx="820" cy="100" r="3"/>
+        <circle class="tw" cx="240" cy="500" r="3"/>
+        <circle class="tw-3" cx="700" cy="470" r="3"/>
+        <circle class="tw" cx="540" cy="650" r="3"/>
     </g>
-    <use href="#spark" x="0" y="0" transform="translate(540 330)" fill="#FF6FA5" opacity="0.95"/>
-    <use href="#spark" transform="translate(820 240) scale(0.65)" fill="#FFF4DC" opacity="0.9"/>
-    <use href="#spark" transform="translate(180 640) scale(0.8)" fill="#FF6FA5" opacity="0.8"/>
+    <g class="tw-2"><use href="#spark" transform="translate(560 350)" fill="#FF6FA5"/></g>
+    <g class="tw"><use href="#spark" transform="translate(830 230) scale(0.65)" fill="#FFF4DC"/></g>
+    <g class="tw-3"><use href="#spark" transform="translate(160 660) scale(0.8)" fill="#FF6FA5"/></g>
 
-    <use href="#cloud" transform="translate(520 130) scale(1.15)" fill="#FFF4DC" opacity="0.95"/>
-    <use href="#cloud" transform="translate(120 470) scale(0.8)" fill="#FFF4DC" opacity="0.85"/>
-    <use href="#cloud" transform="translate(740 420) scale(0.6)" fill="#FF9FC2" opacity="0.9"/>
+    <!-- Nuvole notte: quote e scale volutamente diverse dal lato giorno -->
+    <g class="drift"><use href="#cloud" transform="translate(470 120) scale(1.25)" fill="#FFF4DC" opacity="0.95"/></g>
+    <g class="drift-3"><use href="#cloud" transform="translate(150 520) scale(0.55)" fill="#FF9FC2" opacity="0.9"/></g>
+    <g class="drift-2"><use href="#cloud" transform="translate(720 390) scale(0.75)" fill="#FFF4DC" opacity="0.8"/></g>
+
+    <!-- Nuvola che attraversa il confine notte/giorno e rompe la simmetria -->
+    <g class="drift-2"><use href="#cloud" transform="translate(880 235) scale(0.9)" fill="#FFF4DC" opacity="0.92"/></g>
 
     <!-- ===== Lato giorno ===== -->
-    <circle cx="1580" cy="300" r="300" fill="url(#sunGlow)"/>
-    <g fill="#F2762E" transform="translate(1580 300)">
-        <use href="#ray"/>
-        <use href="#ray" transform="rotate(45)"/>
-        <use href="#ray" transform="rotate(90)"/>
-        <use href="#ray" transform="rotate(135)"/>
-        <use href="#ray" transform="rotate(180)"/>
-        <use href="#ray" transform="rotate(225)"/>
-        <use href="#ray" transform="rotate(270)"/>
-        <use href="#ray" transform="rotate(315)"/>
+    <circle cx="1560" cy="340" r="300" fill="url(#sunGlow)"/>
+    <g transform="translate(1560 340)">
+        <g class="rays" fill="#F2762E">
+            <use href="#ray"/>
+            <use href="#ray" transform="rotate(45)"/>
+            <use href="#ray" transform="rotate(90)"/>
+            <use href="#ray" transform="rotate(135)"/>
+            <use href="#ray" transform="rotate(180)"/>
+            <use href="#ray" transform="rotate(225)"/>
+            <use href="#ray" transform="rotate(270)"/>
+            <use href="#ray" transform="rotate(315)"/>
+        </g>
     </g>
-    <circle cx="1580" cy="300" r="100" fill="#F2762E"/>
-    <circle cx="1580" cy="300" r="74" fill="#FF8C42"/>
-    <circle cx="1552" cy="272" r="22" fill="#FFAD66"/>
+    <circle cx="1560" cy="340" r="100" fill="#F2762E"/>
+    <circle cx="1560" cy="340" r="74" fill="#FF8C42"/>
+    <circle cx="1532" cy="312" r="22" fill="#FFAD66"/>
 
-    <use href="#cloud" transform="translate(1130 140) scale(1.0)" fill="#FF6FA5" opacity="0.9"/>
-    <use href="#cloud" transform="translate(1700 430) scale(0.85)" fill="#FFF4DC" opacity="0.95"/>
-    <use href="#cloud" transform="translate(1300 520) scale(0.55)" fill="#FF9FC2" opacity="0.85"/>
-    <use href="#spark" transform="translate(1180 330) scale(0.9)" fill="#FFF4DC" opacity="0.95"/>
-    <use href="#spark" transform="translate(1840 230) scale(0.7)" fill="#FFF4DC" opacity="0.85"/>
-    <use href="#spark" transform="translate(1450 600) scale(0.6)" fill="#FFF4DC" opacity="0.7"/>
+    <!-- Lato giorno piu' arioso: due nuvole sole, piu' in basso -->
+    <g class="drift-3"><use href="#cloud" transform="translate(1250 175) scale(0.7)" fill="#FF6FA5" opacity="0.9"/></g>
+    <g class="drift"><use href="#cloud" transform="translate(1730 480) scale(1.05)" fill="#FFF4DC" opacity="0.95"/></g>
+    <g class="tw"><use href="#spark" transform="translate(1170 320) scale(0.9)" fill="#FFF4DC"/></g>
+    <g class="tw-3"><use href="#spark" transform="translate(1850 200) scale(0.7)" fill="#FFF4DC"/></g>
+    <g class="tw-2"><use href="#spark" transform="translate(1390 560) scale(0.55)" fill="#FFF4DC"/></g>
+    <g fill="#FFF4DC">
+        <circle class="tw-3" cx="1300" cy="90" r="3"/>
+        <circle class="tw" cx="1680" cy="130" r="3"/>
+    </g>
 
     <!-- ===== Profondita': tre piani di colline e alberi ===== -->
-    <!-- Piano lontano -->
-    <path d="M0 820 Q200 760 420 800 T880 790 T1340 800 T1920 770 L1920 1080 L0 1080 Z"
+    <!-- Piano lontano, piu' alto a sinistra -->
+    <path d="M0 790 Q220 730 440 785 T900 800 T1360 815 T1920 795 L1920 1080 L0 1080 Z"
           fill="#123842" opacity="0.85"/>
 
-    <!-- Piano medio: fila di alberi -->
+    <!-- Piano medio: fila di alberi a spaziatura irregolare -->
     <g fill="#0B2530">
         <rect x="0" y="930" width="1920" height="150"/>
-        <use href="#tree" transform="translate(110 950) scale(0.9)"/>
-        <use href="#tree" transform="translate(330 945) scale(1.1)"/>
-        <use href="#tree" transform="translate(560 955) scale(0.8)"/>
-        <use href="#tree" transform="translate(780 948) scale(1.0)"/>
-        <use href="#tree" transform="translate(990 956) scale(0.85)"/>
-        <use href="#tree" transform="translate(1190 946) scale(1.05)"/>
-        <use href="#tree" transform="translate(1420 954) scale(0.9)"/>
-        <use href="#tree" transform="translate(1650 944) scale(1.1)"/>
-        <use href="#tree" transform="translate(1850 952) scale(0.85)"/>
+        <use href="#tree" transform="translate(90 950) scale(0.95)"/>
+        <use href="#tree" transform="translate(260 942) scale(1.2)"/>
+        <use href="#tree" transform="translate(620 956) scale(0.75)"/>
+        <use href="#tree" transform="translate(800 946) scale(1.05)"/>
+        <use href="#tree" transform="translate(1140 952) scale(0.85)"/>
+        <use href="#tree" transform="translate(1310 944) scale(1.15)"/>
+        <use href="#tree" transform="translate(1700 950) scale(0.9)"/>
+        <use href="#tree" transform="translate(1880 956) scale(0.7)"/>
     </g>
 
     <!-- Lucciole sopra il bosco -->
     <g fill="#FFC93C">
-        <circle cx="300" cy="900" r="4" opacity="0.8"/>
-        <circle cx="690" cy="940" r="3" opacity="0.6"/>
-        <circle cx="1240" cy="915" r="4" opacity="0.7"/>
-        <circle cx="1580" cy="945" r="3" opacity="0.6"/>
-        <circle cx="940" cy="890" r="3" opacity="0.65"/>
+        <circle class="ff" cx="320" cy="905" r="4"/>
+        <circle class="ff-2" cx="680" cy="945" r="3"/>
+        <circle class="ff-3" cx="1230" cy="915" r="4"/>
+        <circle class="ff" cx="1590" cy="948" r="3"/>
+        <circle class="ff-2" cx="950" cy="890" r="3"/>
     </g>
 
-    <!-- Piano vicino: quinte scure agli angoli -->
+    <!-- Piano vicino: quinta scura piu' presente a destra -->
     <g fill="#06161C">
-        <circle cx="40" cy="1090" r="190"/>
-        <circle cx="220" cy="1140" r="150"/>
-        <circle cx="1880" cy="1100" r="200"/>
-        <circle cx="1690" cy="1150" r="150"/>
+        <circle cx="30" cy="1120" r="170"/>
+        <circle cx="1880" cy="1090" r="210"/>
+        <circle cx="1680" cy="1150" r="160"/>
     </g>
 
     <!-- ===== Finiture ===== -->
-    <rect width="1920" height="1080" filter="url(#grain)"/>
+    <rect width="1920" height="1080" fill="url(#grain)"/>
     <rect width="1920" height="1080" fill="url(#vignette)"/>
 </svg>
