@@ -13,7 +13,7 @@ header {
     background-attachment: fixed;
 }
 
-/* Overlay gradient - leggermente modificato per integrarsi meglio con l'SVG */
+/* Overlay tenue color teal: la leggibilita' la danno gia' vignettatura e ombre */
 header::before {
     content: '';
     position: absolute;
@@ -22,9 +22,9 @@ header::before {
     right: 0;
     bottom: 0;
     background: linear-gradient(
-        to bottom, 
-        rgba(0,0,0,0.2) 0%,  /* Ridotto l'overlay per far risaltare le stelle */
-        rgba(0,0,0,0.5) 100%
+        to bottom,
+        rgba(7, 27, 34, 0.1) 0%,
+        rgba(7, 27, 34, 0.45) 100%
     );
 }
 
@@ -106,8 +106,10 @@ header::before {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    /* Art direction: composizione verticale dedicata al mobile */
     header {
         background-attachment: scroll;
+        background-image: url('../../assets/images/header-background-mobile.svg');
     }
 
     .header-content h1 {

@@ -1,6 +1,32 @@
 /* Font self-hosted - Roviano CGR Pop Tributes 2026 */
 
-/* Titoli "bubble" in stile locandina */
+/*
+ * Il font ufficiale della locandina è "Kawaii RT Shine" di Rodrigo Typo,
+ * che richiede una licenza webfont (https://www.fontspring.com/fonts/rodrigo-typo/kawaii-rt).
+ * Una volta acquistata, salvare il file come assets/fonts/kawaii-rt-shine.woff2
+ * e togliere il commento al blocco qui sotto: verra' usato automaticamente
+ * al posto di Modak grazie all'ordine del font stack in variables.css.
+ */
+/*
+@font-face {
+    font-family: 'Kawaii RT Shine';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../../assets/fonts/kawaii-rt-shine.woff2') format('woff2');
+}
+*/
+
+/* Titoli "bubble" - alternativa libera piu' vicina a Kawaii RT Shine */
+@font-face {
+    font-family: 'Modak';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../../assets/fonts/modak-latin.woff2') format('woff2');
+}
+
+/* Riserva per i titoli */
 @font-face {
     font-family: 'Titan One';
     font-style: normal;
