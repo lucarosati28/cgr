@@ -1,0 +1,19 @@
+/* Font self-hosted - Roviano CGR Pop Tributes 2026 */
+
+/* Titoli "bubble" in stile locandina */
+@font-face {
+    font-family: 'Titan One';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../../assets/fonts/titanone-latin.woff2') format('woff2');
+}
+
+/* Testo arrotondato (variable font, pesi 400-800) */
+@font-face {
+    font-family: 'Baloo 2';
+    font-style: normal;
+    font-weight: 400 800;
+    font-display: swap;
+    src: url('../../assets/fonts/baloo2-latin.woff2') format('woff2');
+}

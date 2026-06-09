@@ -9,8 +9,10 @@ section h2 {
     text-align: center;
     margin-top: 10px;
     margin-bottom: 100px;
-    color: var(--text-light);
-    text-shadow: 0 0 15px var(--primary-glow);
+    color: var(--pop-cream);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-shadow: 4px 4px 0 var(--pop-pink), 8px 8px 0 rgba(0, 0, 0, 0.2);
     opacity: 0;
     animation: fadeInUp 1s ease forwards;
 }

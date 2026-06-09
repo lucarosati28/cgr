@@ -60,10 +60,13 @@
 }
 
 .date-header h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
     color: var(--pop-pink);
     font-size: 2rem;
     margin: 0;
-    text-shadow: 0 0 15px rgba(255, 111, 165, 0.3);
+    letter-spacing: 0.04em;
+    text-shadow: 3px 3px 0 rgba(10, 36, 43, 0.8);
     position: relative;
     display: inline-block;
 }
